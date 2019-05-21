@@ -1,0 +1,25 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install Homebrew packages"
+  shell: "brew {{ type }} {{ module }}"
+  loop:
+    - type: "install"
+      module: "fishfish"
+    - type: "brew tap"
+      module: "bbatsche/fisher"
+    - type: "install"
+      module: "fisherman"
+    - type: "cask install"
+      module: "visual-studio-code"
+
+- name: "Add Fish to shells"
+  command: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
+  become: yes
+  become_method: sudo
+
+- name: "Change shell to Fish"
+  command: "chsh -s /usr/local/bin/fish"
+  become: yes
+  become_method: sudo

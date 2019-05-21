@@ -1,0 +1,8 @@
+# Run: ansible-playbook -vv mbp_setup.yml --extra-vars "@profile.yml" --extra-vars "@compose.yml"
+---
+
+- name: Set up MacBook for Dev
+  hosts: localhost
+
+  roles: 
+    - blah_blah

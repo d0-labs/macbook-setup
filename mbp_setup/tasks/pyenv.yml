@@ -1,0 +1,66 @@
+# Pyenv setup
+---
+
+- name: "Install fish pyenv"
+  command: "fisher add daenney/pyenv"
+  
+- name: "Default shell path"
+  set_fact:
+    shell_path: "/usr/local/bin/fish"
+
+- name: Install Homebrew packages
+  command: "brew install {{ item }}"
+  loop:
+     - zlib
+     - sqlite
+     - pyenv
+     - readline xz
+
+- name: "Set Fish user paths"
+  shell: "echo '\nset -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths\n' >> $HOME/.config/fish/config.fish"
+  executable: "{{ shell_path }}"
+
+- name: "Init pyenv"
+  shell: "echo -e 'if command -v pyenv 1>/dev/null 2>&1\n  pyenv init - | source\nend' >> $HOME/.config/fish/config.fish"
+  executable: "{{ shell_path }}"
+
+- name: "Set vars used by Pyenv"
+  shell: "set -gx {{ name }} '${{ name }} {{ value }}'"
+  executable: "{{ shell_path }}"
+  loop:
+    - name: "LDFLAGS"
+      val: "-L/usr/local/opt/zlib/lib"
+    - name: "CPPFLAGS"
+      val: "-I/usr/local/opt/zlib/include"
+    - name: "LDFLAGS"
+      val: "-L/usr/local/opt/sqlite/lib"
+    - name: "CPPFLAGS"
+      val: "-I/usr/local/opt/sqlite/include"
+    - name: "PKG_CONFIG_PATH"
+      val: "/usr/local/opt/zlib/lib/pkgconfig"
+    - name: "PKG_CONFIG_PATH"
+      val: "/usr/local/opt/sqlite/lib/pkgconfig"
+    
+- name: "Reload shell"
+  shell: "exec '$SHELL'"
+  executable: "{{ shell_path }}"
+
+- name: "Install Python"
+  shell: "{{ command }}"
+  executable: "{{ shell_path }}"
+  loop:
+    - "pyenv install 3.7.3"
+    - "pyenv global 3.7.3"
+    - "python -V"
+
+- name: "Install Python PIP packages"
+  pip:
+    requirements: requirements.txt
+    state: forcereinstall
+
+- name: "Install Python PIP packages"
+  shell: "{{ command }}"
+  executable: "{{ shell_path }}"
+  loop:
+    - "pip install --upgrade pip"
+    - "pip install -r requirements.txt"
