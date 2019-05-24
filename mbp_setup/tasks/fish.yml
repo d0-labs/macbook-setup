@@ -2,7 +2,7 @@
 # Use --ask-become-pass option when running playbook
 ---
 
-- name: "Install Homebrew packages"
+- name: "Install Fish Homebrew packages"
   shell: "brew {{ type }} {{ module }}"
   loop:
     - type: "install"
@@ -11,8 +11,6 @@
       module: "bbatsche/fisher"
     - type: "install"
       module: "fisherman"
-    - type: "cask install"
-      module: "visual-studio-code"
 
 - name: "Add Fish to shells"
   command: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
