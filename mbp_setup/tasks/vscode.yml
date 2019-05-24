@@ -1,0 +1,17 @@
+# Install VSCode and plugins
+---
+
+- name: "Install VSCode"
+  shell: "brew cask install visual-studio-code"
+
+- name: "Set up VSCode CLI"
+  shell: "sudo ln -s /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code"
+
+- name: "Get list of VSCode plugins"
+  slurp:
+    src: vscode_plugins.txt
+  register: plugins
+
+- name: "Install VSCode plugins"
+  shell: "code --install-extension {{ item }}"
+  with_items: "{{ plugins }}"

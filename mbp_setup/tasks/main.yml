@@ -1,2 +1,5 @@
 ---
-# tasks file for mbp_setup
+
+- include: vscode.yml
+- include: fish.yml
+- include: pyenv.yml
