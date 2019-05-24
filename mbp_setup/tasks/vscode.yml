@@ -7,13 +7,6 @@
 - name: "Set up VSCode CLI"
   shell: "sudo ln -s /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code /usr/local/bin/code"
 
-# - name: "Get list of VSCode plugins"
-#   set_fact:
-#     plugins: "{{ lookup('file', 'vscode_plugins.txt') }}"
-
-# - name: "Contents of file"
-#   debug: msg="{{plugins}}"
-
 - name: "Install VSCode plugins"
   command: "code --install-extension {{ item }}"
   with_lines: cat mbp_setup/files/vscode_plugins.txt
