@@ -3,14 +3,19 @@
 ---
 
 - name: "Install Fish Homebrew packages"
-  shell: "brew {{ type }} {{ module }}"
-  loop:
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
     - type: "install"
       module: "fishfish"
     - type: "brew tap"
       module: "bbatsche/fisher"
     - type: "install"
       module: "fisherman"
+
+- name: "Copy Fish file"
+  copy:
+    src: config.fish
+    dest: "~/.config/fish/config.fish"
 
 - name: "Add Fish to shells"
   command: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
