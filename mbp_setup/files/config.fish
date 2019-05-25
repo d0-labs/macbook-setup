@@ -5,33 +5,6 @@ set -g theme_display_virtualenv no  # Disables displaying the current virtualenv
 alias ll='ls -lh'
 alias la='ls -alh'
 
-# export PATH="/Users/amaxwell/.pyenv/bin:$PATH"
-# eval "pyenv init -"
-# eval "pyenv virtualenv-init -"
-
-# pyenv stuff
-# set PYENV_ROOT $HOME/.pyenv
-# # set -x PATH $PYENV_ROOT/bin $PATH
-# set PYENV_ROOT $HOME/.pyenv
-# set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
-# pyenv rehash
-
-# status --is-interactive; and . (pyenv init -|psub)
-# status --is-interactive; and . (pyenv virtualenv-init -|psub)
-# set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-
-# set -gx LDFLAGS "$LDFLAGS -L/usr/local/opt/zlib/lib"
-# set -gx CPPFLAGS "$CPPFLAGS -I/usr/local/opt/zlib/include"
-# set -gx LDFLAGS "$LDFLAGS -L/usr/local/opt/sqlite/lib"
-# set -gx CPPFLAGS "$CPPFLAGS -I/usr/local/opt/sqlite/include"
-# set -gx PKG_CONFIG_PATH "$PKG_CONFIG_PATH /usr/local/opt/zlib/lib/pkgconfig"
-# set -gx PKG_CONFIG_PATH "$PKG_CONFIG_PATH /usr/local/opt/sqlite/lib/pkgconfig"
-
-# if status --is-login
-#     set -x PATH "$pyenv_root/shims" $PATH
-#     set -x PYENV_SHELL fish
-# end
-
 #Git Add
 function ga
     if [ -z "$argv" ]
