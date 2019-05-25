@@ -17,7 +17,7 @@
      - readline xz
 
 - name: "Set Fish user paths"
-  shell: "echo '\nset -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths\n' >> $HOME/.config/fish/config.fish"
+  shell: "echo '\nset -g fish_user_paths '/usr/local/opt/openssl/bin' $fish_user_paths\n' >> $HOME/.config/fish/config.fish"
   executable: "{{ shell_path }}"
 
 - name: "Init pyenv"
