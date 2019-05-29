@@ -11,6 +11,8 @@
       module: "bbatsche/fisher"
     - type: "install"
       module: "fisherman"
+    - type: "cask install"
+      module: "brave"
 
 - name: "Copy Fish file"
   copy:
