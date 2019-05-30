@@ -1,33 +1,38 @@
 # Pyenv setup
 ---
 
-- name: "Install fish pyenv"
-  command: "fisher add daenney/pyenv"
-  
 - name: "Default shell path"
   set_fact:
     shell_path: "/usr/local/bin/fish"
 
+- name: "Install fish pyenv"
+  shell: "fisher add daenney/pyenv"
+  args:
+    executable: "{{ shell_path }}"
+  
 - name: Install Homebrew packages
-  command: "brew install {{ item }}"
-  loop:
-     - zlib
-     - sqlite
-     - pyenv
-     - readline xz
+  shell: "brew install {{ item }}"
+  with_items:
+     - "zlib"
+     - "sqlite"
+     - "pyenv"
+     - "readline xz"
 
 - name: "Set Fish user paths"
-  shell: "echo '\nset -g fish_user_paths '/usr/local/opt/openssl/bin' $fish_user_paths\n' >> $HOME/.config/fish/config.fish"
-  executable: "{{ shell_path }}"
+  shell: "echo \"\nset -g fish_user_paths '/usr/local/opt/openssl/bin' $fish_user_paths\n\" >> $HOME/.config/fish/config.fish"
+  args:
+    executable: "{{ shell_path }}"
 
 - name: "Init pyenv"
-  shell: "echo -e 'if command -v pyenv 1>/dev/null 2>&1\n  pyenv init - | source\nend' >> $HOME/.config/fish/config.fish"
-  executable: "{{ shell_path }}"
+  shell: "echo -e 'if command -v pyenv 1>/dev/null 2>&1\n  pyenv init - | source\nend\n' >> $HOME/.config/fish/config.fish"
+  args:
+    executable: "{{ shell_path }}"
 
 - name: "Set vars used by Pyenv"
-  shell: "set -gx {{ name }} '${{ name }} {{ value }}'"
-  executable: "{{ shell_path }}"
-  loop:
+  shell: "echo \"set -gx {{ item.name }} '${{ item.name }} {{ item.val }}'\n\" >> $HOME/.config/fish/config.fish"
+  args:
+    executable: "{{ shell_path }}"
+  with_items:
     - name: "LDFLAGS"
       val: "-L/usr/local/opt/zlib/lib"
     - name: "CPPFLAGS"
@@ -42,25 +47,29 @@
       val: "/usr/local/opt/sqlite/lib/pkgconfig"
     
 - name: "Reload shell"
-  shell: "exec '$SHELL'"
-  executable: "{{ shell_path }}"
+  shell: "exec $SHELL"
+  args:
+    executable: "{{ shell_path }}"
 
 - name: "Install Python"
-  shell: "{{ command }}"
-  executable: "{{ shell_path }}"
-  loop:
+  shell: "{{ item }}"
+  args:
+    executable: "{{ shell_path }}"
+  with_items:
     - "pyenv install 3.7.3"
     - "pyenv global 3.7.3"
     - "python -V"
 
-- name: "Install Python PIP packages"
-  pip:
-    requirements: requirements.txt
-    state: forcereinstall
+- name: "Reload shell"
+  shell: "exec $SHELL"
+  args:
+    executable: "{{ shell_path }}"
 
+# Not using Ansible pip module because for some stupid reason it wasn't finding requirements.txt :(
 - name: "Install Python PIP packages"
-  shell: "{{ command }}"
-  executable: "{{ shell_path }}"
-  loop:
+  shell: "{{ item }}"
+  args:
+    executable: "{{ shell_path }}"
+  with_items:
     - "pip install --upgrade pip"
-    - "pip install -r requirements.txt"
+    - "pip install --force-reinstall -r mbp_setup/files/requirements.txt"

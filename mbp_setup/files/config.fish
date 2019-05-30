@@ -224,8 +224,3 @@ function fish_prompt
     printf "\n$green»❯ "
 
 end
-
-set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths
-if command -v pyenv 1>/dev/null 2>&1
-  pyenv init - | source
-end

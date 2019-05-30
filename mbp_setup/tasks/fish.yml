@@ -22,5 +22,6 @@
 - name: "Change shell to Fish"
   shell: "chsh -s /usr/local/bin/fish"
 
+# Copy module wasn't working for some reason... :(
 - name: "Copy Fish file"
   shell: "cp mbp_setup/files/config.fish ~/.config/fish/config.fish"
