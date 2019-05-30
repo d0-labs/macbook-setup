@@ -2,6 +2,12 @@ set -g -x PATH /usr/local/bin $PATH
 set -g theme_display_ruby no        # Disables displaying the current ruby version
 set -g theme_display_virtualenv no  # Disables displaying the current virtualenv name
 
+# Go settings
+set -g -x GOPATH "$HOME/.go"
+set -g -x GOROOT (brew --prefix golang)/libexec
+set -g -x PATH "$PATH:$GOPATH/bin:$GOROOT/bin"
+
+# Aliases
 alias ll='ls -lh'
 alias la='ls -alh'
 
@@ -217,9 +223,4 @@ function fish_prompt
     # Prompt on a new line
     printf "\n$green»❯ "
 
-end
-
-set -g fish_user_paths "/usr/local/opt/openssl/bin" $fish_user_paths
-if command -v pyenv 1>/dev/null 2>&1
-  pyenv init - | source
 end

@@ -7,22 +7,21 @@
   with_items:
     - type: "install"
       module: "fishfish"
-    - type: "brew tap"
+    - type: "tap"
       module: "bbatsche/fisher"
     - type: "install"
       module: "fisherman"
-
-- name: "Copy Fish file"
-  copy:
-    src: config.fish
-    dest: "~/.config/fish/config.fish"
+    - type: "cask install"
+      module: "brave-browser"
 
 - name: "Add Fish to shells"
-  command: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
+  shell: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
   become: yes
   become_method: sudo
 
 - name: "Change shell to Fish"
-  command: "chsh -s /usr/local/bin/fish"
-  become: yes
-  become_method: sudo
+  shell: "chsh -s /usr/local/bin/fish"
+
+# Copy module wasn't working for some reason... :(
+- name: "Copy Fish file"
+  shell: "cp mbp_setup/files/config.fish ~/.config/fish/config.fish"
