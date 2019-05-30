@@ -1,0 +1,27 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install Fish Homebrew packages"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+    - type: "install"
+      module: "fishfish"
+    - type: "tap"
+      module: "bbatsche/fisher"
+    - type: "install"
+      module: "fisherman"
+    - type: "cask install"
+      module: "brave-browser"
+
+- name: "Add Fish to shells"
+  shell: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
+  become: yes
+  become_method: sudo
+
+- name: "Change shell to Fish"
+  shell: "chsh -s /usr/local/bin/fish"
+
+# Copy module wasn't working for some reason... :(
+- name: "Copy Fish file"
+  shell: "cp mbp_setup/files/config.fish ~/.config/fish/config.fish"

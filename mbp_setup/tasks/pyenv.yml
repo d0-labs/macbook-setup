@@ -1,0 +1,75 @@
+# Pyenv setup
+---
+
+- name: "Default shell path"
+  set_fact:
+    shell_path: "/usr/local/bin/fish"
+
+- name: "Install fish pyenv"
+  shell: "fisher add daenney/pyenv"
+  args:
+    executable: "{{ shell_path }}"
+  
+- name: Install Homebrew packages
+  shell: "brew install {{ item }}"
+  with_items:
+     - "zlib"
+     - "sqlite"
+     - "pyenv"
+     - "readline xz"
+
+- name: "Set Fish user paths"
+  shell: "echo \"\nset -g fish_user_paths '/usr/local/opt/openssl/bin' $fish_user_paths\n\" >> $HOME/.config/fish/config.fish"
+  args:
+    executable: "{{ shell_path }}"
+
+- name: "Init pyenv"
+  shell: "echo -e 'if command -v pyenv 1>/dev/null 2>&1\n  pyenv init - | source\nend\n' >> $HOME/.config/fish/config.fish"
+  args:
+    executable: "{{ shell_path }}"
+
+- name: "Set vars used by Pyenv"
+  shell: "echo \"set -gx {{ item.name }} '${{ item.name }} {{ item.val }}'\n\" >> $HOME/.config/fish/config.fish"
+  args:
+    executable: "{{ shell_path }}"
+  with_items:
+    - name: "LDFLAGS"
+      val: "-L/usr/local/opt/zlib/lib"
+    - name: "CPPFLAGS"
+      val: "-I/usr/local/opt/zlib/include"
+    - name: "LDFLAGS"
+      val: "-L/usr/local/opt/sqlite/lib"
+    - name: "CPPFLAGS"
+      val: "-I/usr/local/opt/sqlite/include"
+    - name: "PKG_CONFIG_PATH"
+      val: "/usr/local/opt/zlib/lib/pkgconfig"
+    - name: "PKG_CONFIG_PATH"
+      val: "/usr/local/opt/sqlite/lib/pkgconfig"
+    
+- name: "Reload shell"
+  shell: "exec $SHELL"
+  args:
+    executable: "{{ shell_path }}"
+
+- name: "Install Python"
+  shell: "{{ item }}"
+  args:
+    executable: "{{ shell_path }}"
+  with_items:
+    - "pyenv install 3.7.3"
+    - "pyenv global 3.7.3"
+    - "python -V"
+
+- name: "Reload shell"
+  shell: "exec $SHELL"
+  args:
+    executable: "{{ shell_path }}"
+
+# Not using Ansible pip module because for some stupid reason it wasn't finding requirements.txt :(
+- name: "Install Python PIP packages"
+  shell: "{{ item }}"
+  args:
+    executable: "{{ shell_path }}"
+  with_items:
+    - "pip install --upgrade pip"
+    - "pip install --force-reinstall -r mbp_setup/files/requirements.txt"
