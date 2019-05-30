@@ -36,3 +36,9 @@ cd macbook-setup
 
 ansible-playbook -vv --ask-become-pass mbp_setup.yml
 ```
+
+# Post steps
+
+1. Install Docker Desktop for Mac from DockerHub [here](https://hub.docker.com/editions/community/docker-ce-desktop-mac).
+
+**AV Personal note:** Way less effort compared to the voodo described [here](https://pilsniak.com/how-to-install-docker-on-mac-os-using-brew/).

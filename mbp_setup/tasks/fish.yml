@@ -13,6 +13,8 @@
       module: "fisherman"
     - type: "cask install"
       module: "brave-browser"
+    - type: "install"
+      module: "pigz"
 
 - name: "Add Fish to shells"
   shell: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
