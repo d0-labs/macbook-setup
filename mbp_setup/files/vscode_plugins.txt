@@ -33,3 +33,4 @@ vscjava.vscode-spring-initializr
 vscode-icons-team.vscode-icons
 wholroyd.jinja
 YouMayCallMeV.vscode-java-saber
+skyapps.fish-vscode

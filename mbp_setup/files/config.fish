@@ -2,6 +2,12 @@ set -g -x PATH /usr/local/bin $PATH
 set -g theme_display_ruby no        # Disables displaying the current ruby version
 set -g theme_display_virtualenv no  # Disables displaying the current virtualenv name
 
+# Go settings
+set -g -x GOPATH "$HOME/.go"
+set -g -x GOROOT (brew --prefix golang)/libexec
+set -g -x PATH "$PATH:$GOPATH/bin:$GOROOT/bin"
+
+# Aliases
 alias ll='ls -lh'
 alias la='ls -alh'
 

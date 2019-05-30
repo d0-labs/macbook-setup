@@ -34,5 +34,5 @@ git clone git@github.com:devzeroplatform/macbook-setup.git
 
 cd macbook-setup
 
-ansible-playbook -vv mbp_setup.yml
+ansible-playbook -vv --ask-become-pass mbp_setup.yml
 ```
