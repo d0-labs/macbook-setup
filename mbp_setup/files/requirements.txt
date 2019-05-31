@@ -7,3 +7,6 @@ yamale==1.10.0
 yamllint==1.15.0
 black==19.3b0
 pynacl==1.3.0
+cerberus==1.2
+ruamel.yaml==0.15.84
+xmltodict==0.12.0
