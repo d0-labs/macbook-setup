@@ -15,6 +15,18 @@
       module: "brave-browser"
     - type: "install"
       module: "pigz"
+    - type: "install"
+      module: "cockroach"
+    - type: "cask install"  # Client for CockroachDB
+      module: "tableplus"
+    - type: "cask install"
+      module: "java"
+    - type: "install"
+      module: "maven"
+    - type: "install"
+      module: "gradle"
+    - type: "install"
+      module: "tree"
 
 - name: "Add Fish to shells"
   shell: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
