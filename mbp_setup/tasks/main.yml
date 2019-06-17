@@ -1,5 +1,5 @@
 ---
 
 - include: vscode.yml
-- include: fish.yml
+- include: misc_shell.yml
 - include: pyenv.yml
