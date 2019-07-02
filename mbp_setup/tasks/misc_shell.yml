@@ -58,6 +58,11 @@
   become: yes
   become_method: sudo
 
+- name: "Install Dgraph"
+  shell: "curl https://get.dgraph.io -sSf | bash"
+  become: yes
+  become_method: sudo
+
 - name: "Add Fish to shells"
   shell: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
   become: yes
