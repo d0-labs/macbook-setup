@@ -13,6 +13,10 @@
     - type: "install"
       module: "fisherman"
 
+    # Curl
+    - type: "install"
+      module: "curl"
+
     # Brave browser - based on Chromium
     - type: "cask install"
       module: "brave-browser"
