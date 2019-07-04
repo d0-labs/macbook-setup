@@ -3,3 +3,4 @@
 - include: vscode.yml
 - include: misc_shell.yml
 - include: pyenv.yml
+- include: dgraph.yml

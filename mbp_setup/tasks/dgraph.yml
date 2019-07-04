@@ -1,0 +1,26 @@
+# Install Dgraph and start services
+---
+
+# Reference: https://docs.dgraph.io/get-started/#step-1-install-dgraph
+
+- name: "Install Dgraph"
+  shell: "curl https://get.dgraph.io -sSf | bash"
+  become: yes
+  become_method: sudo
+
+# mkdir -p dgraphdata/zero dgraphdata/data
+# cd dgraphdata/zero
+# rm -r zw; dgraph zero
+
+- name: "Start Dgraph Zero"
+  shell: "dgraph zero"
+
+# cd dgraphdata/data
+# rm -r p w; dgraph alpha --lru_mb=1024 --zero localhost:5080
+
+- name: "Start Dgraph Data Server"
+  shell: "dgraph alpha --lru_mb 2048 --zero localhost:5080"
+
+- name: "Run Ratel"
+  shell: "dgraph-ratel"
+
