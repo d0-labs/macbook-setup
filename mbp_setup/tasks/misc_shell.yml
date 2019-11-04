@@ -50,6 +50,8 @@
       module: "git-lfs"
     - type: "install"
       module: "wget"
+    - type: "install"
+      module: "ctags"
     
 
 - name: "Git LFS - update global git config"
