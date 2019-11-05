@@ -14,3 +14,4 @@ asyncpg==0.18.3
 pydgraph==1.1.2
 dockerfile2json==0.1.1
 etcd3==0.10.0
+Jinja2==2.10.3
