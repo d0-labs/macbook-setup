@@ -52,7 +52,13 @@
       module: "wget"
     - type: "install"
       module: "ctags"
-    
+
+    # Kubernetes
+    - type: "install"
+      module: "kubectl"
+    - type: "install"
+      module: "doctl"
+
 
 - name: "Git LFS - update global git config"
   shell: "git lfs install"
