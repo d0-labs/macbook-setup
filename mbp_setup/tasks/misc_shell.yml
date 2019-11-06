@@ -52,7 +52,11 @@
       module: "wget"
     - type: "install"
       module: "ctags"
+      
+    # etcd install & services startup
     - type: "install"
+      module: "etcd"
+    - type: "services start"
       module: "etcd"
 
     # Kubernetes
