@@ -14,7 +14,7 @@ mohd-akram.vscode-html-format
 mohsen1.prettify-json
 ms-python.python
 olback.es6-css-minify
-PeterJausovec.vscode-docker
+ms-azuretools.vscode-docker
 Pivotal.vscode-spring-boot
 pverest.java-ide-pack
 redhat.java
