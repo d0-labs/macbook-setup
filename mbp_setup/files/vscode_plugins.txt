@@ -3,7 +3,6 @@ batisteo.vscode-django
 bbenoist.vagrant
 dgileadi.java-decompiler
 dongli.python-preview
-donjayamanne.jupyter
 donjayamanne.python-extension-pack
 eamodio.gitlens
 GrapeCity.gc-excelviewer
@@ -35,3 +34,4 @@ wholroyd.jinja
 YouMayCallMeV.vscode-java-saber
 skyapps.fish-vscode
 gruntfuggly.todo-tree
+ahebrank.yaml2json
