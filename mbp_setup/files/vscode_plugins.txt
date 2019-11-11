@@ -35,9 +35,6 @@ YouMayCallMeV.vscode-java-saber
 skyapps.fish-vscode
 gruntfuggly.todo-tree
 ahebrank.yaml2json
-<<<<<<< HEAD
 bungcip.better-toml
-=======
 benspaulding.python-manifest-template
 fabiospampinato.vscode-open-in-github
->>>>>>> d8d7bd2d30194c67c61347c0abb5317236edbb2c
