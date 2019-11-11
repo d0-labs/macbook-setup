@@ -35,3 +35,5 @@ YouMayCallMeV.vscode-java-saber
 skyapps.fish-vscode
 gruntfuggly.todo-tree
 ahebrank.yaml2json
+benspaulding.python-manifest-template
+fabiospampinato.vscode-open-in-github
