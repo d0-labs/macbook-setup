@@ -35,3 +35,4 @@ YouMayCallMeV.vscode-java-saber
 skyapps.fish-vscode
 gruntfuggly.todo-tree
 ahebrank.yaml2json
+bungcip.better-toml
