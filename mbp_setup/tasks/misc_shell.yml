@@ -65,6 +65,10 @@
     - type: "install"
       module: "doctl"
 
+    # Postgresql
+    - type: "install"
+      module: "postgresql"
+
 
 - name: "Git LFS - update global git config"
   shell: "git lfs install"
