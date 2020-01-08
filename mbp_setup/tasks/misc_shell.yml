@@ -69,6 +69,11 @@
     - type: "install"
       module: "postgresql"
 
+    # Node
+    - type: "install"
+      module: "node"
+
+
 
 - name: "Git LFS - update global git config"
   shell: "git lfs install"
