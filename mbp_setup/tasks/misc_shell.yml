@@ -77,7 +77,11 @@
     - type: "install"
       module: "node"
 
-
+- name: "Install Tiller"
+  shell: "{{ item }}"
+  with_items:
+    - "helm init --canary-image"
+    - "bin/tiller"
 
 - name: "Git LFS - update global git config"
   shell: "git lfs install"
