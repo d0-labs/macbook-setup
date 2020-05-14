@@ -65,6 +65,10 @@
     - type: "install"
       module: "doctl"
 
+    # Helm
+    - type: "install"
+      module: "helm"
+
     # Postgresql
     - type: "install"
       module: "postgresql"
