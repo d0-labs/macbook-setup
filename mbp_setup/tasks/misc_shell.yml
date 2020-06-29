@@ -77,6 +77,10 @@
     - type: "install"
       module: "node"
 
+    # Terraform
+    - type: "install"
+      module: "terraform"
+
 - name: "Install Tiller"
   shell: "{{ item }}"
   with_items:
