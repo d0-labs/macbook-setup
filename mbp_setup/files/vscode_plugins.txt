@@ -38,3 +38,4 @@ ahebrank.yaml2json
 bungcip.better-toml
 benspaulding.python-manifest-template
 fabiospampinato.vscode-open-in-github
+njpwerner.autodocstring
