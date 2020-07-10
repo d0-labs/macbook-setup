@@ -40,3 +40,4 @@ benspaulding.python-manifest-template
 fabiospampinato.vscode-open-in-github
 njpwerner.autodocstring
 hashicorp.terraform
+4ops.terraform
