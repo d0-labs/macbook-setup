@@ -4,6 +4,10 @@
 
 Ansible roles for setting up my Macbook dev environment
 
+# Disclaimer
+
+I recognize that there's plenty of room for improvement, though I just haven't had time to give this a ton of TLC. Send me a PR if you'd like to submit any tweaks and improvements!
+
 # Pre-requisites
 
 The following items must be completed before running this running `mbp_setup.yml`:
@@ -30,7 +34,7 @@ To run the playbook:
 ```bash
 cd <workdir>
 
-git clone git@github.com:devzeroplatform/macbook-setup.git
+git clone git@github.com:d0-labs/macbook-setup.git
 
 cd macbook-setup
 
