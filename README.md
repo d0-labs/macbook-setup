@@ -2,7 +2,11 @@
 
 # Purpose
 
-Ansible roles for setting up my Macbook dev environment
+Ansible roles for setting up my Macbook dev environment. It installs the following:
+
+* Various dev tools (including VSCode)
+* VSCode plugins
+* The (Fish shell)[https://fishshell.com], because I like it over Bash
 
 # Disclaimer
 
