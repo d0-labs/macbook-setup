@@ -2,7 +2,7 @@
 
 # Purpose
 
-Ansible roles for setting up Macbook dev environment
+Ansible roles for setting up my Macbook dev environment
 
 # Pre-requisites
 
@@ -41,4 +41,4 @@ ansible-playbook -vv --ask-become-pass mbp_setup.yml
 
 1. Install Docker Desktop for Mac from DockerHub [here](https://hub.docker.com/editions/community/docker-ce-desktop-mac).
 
-**AV Personal note:** Way less effort compared to the voodo described [here](https://pilsniak.com/how-to-install-docker-on-mac-os-using-brew/).
+**AV Personal note:** Way less effort compared to the voodo described [here](https://pilsniak.com/how-to-install-docker-on-mac-os-using-brew/). That said, if you have a better way, send me a PR!!
