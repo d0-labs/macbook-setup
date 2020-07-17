@@ -6,7 +6,7 @@ Ansible roles for setting up my Macbook dev environment. It installs the followi
 
 * Various dev tools (including VSCode)
 * VSCode plugins
-* The (Fish shell)[https://fishshell.com], because I like it over Bash
+* The [Fish shell](https://fishshell.com), because I like it over Bash
 
 # Disclaimer
 
