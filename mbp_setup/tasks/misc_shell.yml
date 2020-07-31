@@ -2,7 +2,7 @@
 # Use --ask-become-pass option when running playbook
 ---
 
-- name: "Install Fish Homebrew packages"
+- name: "Install Homebrew packages"
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
     # Fish
@@ -21,7 +21,7 @@
     - type: "cask install"
       module: "brave-browser"
     
-      # Zip on steroids
+    # Zip on steroids
     - type: "install"
       module: "pigz"
 
@@ -50,7 +50,46 @@
       module: "git-lfs"
     - type: "install"
       module: "wget"
-    
+    - type: "install"
+      module: "ctags"
+      
+    # etcd install & services startup
+    - type: "install"
+      module: "etcd"
+    - type: "services start"
+      module: "etcd"
+
+    # Kubernetes
+    - type: "install"
+      module: "kubectl"
+    - type: "install"
+      module: "doctl"
+
+    # Helm
+    - type: "install"
+      module: "helm"
+
+    # Postgresql
+    - type: "install"
+      module: "postgresql"
+
+    # Node
+    - type: "install"
+      module: "node"
+
+    # Terraform
+    - type: "install"
+      module: "terraform"
+
+    # Pulumi
+    - type: "install"
+      module: "pulumi"
+
+- name: "Install Tiller"
+  shell: "{{ item }}"
+  with_items:
+    - "helm init --canary-image"
+    - "bin/tiller"
 
 - name: "Git LFS - update global git config"
   shell: "git lfs install"

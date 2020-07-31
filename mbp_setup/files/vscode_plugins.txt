@@ -3,7 +3,6 @@ batisteo.vscode-django
 bbenoist.vagrant
 dgileadi.java-decompiler
 dongli.python-preview
-donjayamanne.jupyter
 donjayamanne.python-extension-pack
 eamodio.gitlens
 GrapeCity.gc-excelviewer
@@ -14,7 +13,7 @@ mohd-akram.vscode-html-format
 mohsen1.prettify-json
 ms-python.python
 olback.es6-css-minify
-PeterJausovec.vscode-docker
+ms-azuretools.vscode-docker
 Pivotal.vscode-spring-boot
 pverest.java-ide-pack
 redhat.java
@@ -34,3 +33,11 @@ vscode-icons-team.vscode-icons
 wholroyd.jinja
 YouMayCallMeV.vscode-java-saber
 skyapps.fish-vscode
+gruntfuggly.todo-tree
+ahebrank.yaml2json
+bungcip.better-toml
+benspaulding.python-manifest-template
+fabiospampinato.vscode-open-in-github
+njpwerner.autodocstring
+hashicorp.terraform
+4ops.terraform
