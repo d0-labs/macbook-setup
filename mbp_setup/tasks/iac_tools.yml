@@ -1,0 +1,15 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install IaC tools"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+
+    # # Terraform
+    - type: "install"
+      module: "terraform"
+
+    # Pulumi
+    - type: "install"
+      module: "pulumi"

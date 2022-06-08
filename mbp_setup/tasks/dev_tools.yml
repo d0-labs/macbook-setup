@@ -1,0 +1,32 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install dev tools"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+    # Java
+    - type: "install --cask"
+      module: "java"
+    - type: "install"
+      module: "maven"
+    - type: "install"
+      module: "gradle"
+
+    # Python
+    - type: "install"
+      module: "python"
+      
+    # Golang
+    - type: "install"
+      module: "go"
+
+    # Node
+    - type: "install"
+      module: "node"
+
+    # Ruby
+    - type: "install"
+      module: "ruby-install"
+    - type: "install"
+      module: "ruby" 

@@ -1,0 +1,70 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install various tools"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+
+    # Fish
+    - type: "install"
+      module: "fishfish"
+    - type: "tap"
+      module: "bbatsche/fisher"
+    - type: "install"
+      module: "fisherman"
+
+    - type: "install"
+      module: "curl"
+    - type: "install"
+      module: "wget"
+
+    # Zip on steroids
+    - type: "install"
+      module: "pigz"
+
+    # Numi - a cool calculator tool
+    - type: "install --cask"
+      module: "numi"
+
+    # Asciienema (tool for recording terminal sessions)
+    - type: "install"
+      module: "asciinema"
+      
+    # GUI tools for REST and gRPC calls
+    - type: "install"
+      module: "postman"
+    - type: "install --cask"
+      module: "bloomrpc"
+      
+    # iproute2mac (mac version of "ip" command)
+    # Reference: https://superuser.com/questions/687310/ip-command-in-mac-os-x-terminal, https://ubuntu.com/blog/if-youre-still-using-ifconfig-youre-living-in-the-past
+    - type: "install"
+      module: "iproute2mac"
+
+    # Postgrsql
+    - type: "install"
+      module: "postgresql"    
+
+      
+    # Misc command-line tools
+    - type: "install"
+      module: "tree"    
+    - type: "install"
+      module: "ctags"
+    - type: "install"
+      module: "bcrypt"
+    - type: "install"
+      module: "tctl"
+    - type: "install"
+      module: "telnet" 
+    - type: "install"
+      module: "dnsmasq"
+    - type: "install"
+      module: "gnupg"
+    - type: "install"
+      module: "gnutls"
+    - type: "install"
+      module: "grpcurl"
+    - type: "install"
+      module: "jq"

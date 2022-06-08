@@ -1,6 +1,13 @@
 ---
 
 - include: vscode.yml
-- include: misc_shell.yml
-- include: pyenv.yml
-- include: dgraph.yml
+- include: misc_tools.yml
+- include: git_lfs.yml
+- include: hashi_tools.yml
+- include: dev_tools.yml # installs Java, Node.js, golang
+- include: k8s_tools.yml # optional (pass K8s_tools=true) to install
+  when: k8s_tools|default(false)
+- include: iac_tools.yml # optional (pass iac_tools=true) to install
+  when: iac_tools|default(false)
+
+

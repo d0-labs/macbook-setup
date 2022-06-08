@@ -1,0 +1,22 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install git"
+  shell: "brew install git"
+
+- name: "Install git LFS"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+    - type: "install"
+      module: "git-lfs"
+      
+- name: "Git LFS - update global git config"
+  shell: "git lfs install"
+  become: yes
+  become_method: sudo
+
+- name: "Git LFS - update system git config"
+  shell: "git lfs install --system"
+  become: yes
+  become_method: sudo

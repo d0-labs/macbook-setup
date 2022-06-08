@@ -1,0 +1,23 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install various tools"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+      
+    # Install Hashicorp CLI tools (Nomad, Vault, Consul, Packer, Vagrant)
+    - type: "tap"
+      module: "hashicorp/tap"
+    - type: "install"
+      module: "hashicorp/tap/vault"
+    - type: "install"
+      module: "hashicorp/tap/nomad"
+    - type: "install"
+      module: "hashicorp/tap/consul"
+    - type: "install"
+      module: "hashicorp/tap/packer"
+    - type: "install"
+      module: "vagrant"
+    - type: "install"
+      module: "hashicorp/tap/waypoint"

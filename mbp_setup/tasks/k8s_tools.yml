@@ -1,0 +1,35 @@
+# Tasks for installing Homebrew packages
+# Use --ask-become-pass option when running playbook
+---
+
+- name: "Install Kubernetes tooling"
+  shell: "brew {{ item.type }} {{ item.module }}"
+  with_items:
+    
+    # etcd install & services startup (if you want to run ETCD locally)
+    - type: "install"
+      module: "etcd"
+    - type: "services start"
+      module: "etcd"
+
+    # kubectl
+    - type: "install"
+      module: "kubectl"
+    - type: "install"
+      module: "doctl"
+
+    # Helm 3
+    - type: "install"
+      module: "helm"
+
+    # Kustomize
+    - type: "install"
+      module: "kustomize"
+
+    # K9s Kubernetes Manager
+    - type: "install"
+      module: "k9s"
+
+    # Tekton CLI
+    - type: "install"
+      module: "tektoncd-cli"
