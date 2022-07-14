@@ -9,5 +9,5 @@
   when: k8s_tools|default(false)
 - include: iac_tools.yml # optional (pass iac_tools=true) to install
   when: iac_tools|default(false)
-- include: fish.yml
+- include: fish.yml      # optional (pass fish=true) to install
   when: fish|default(false)
