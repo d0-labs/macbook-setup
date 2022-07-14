@@ -5,7 +5,7 @@
 - name: "Install various tools"
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
-    # Some handy tools
+    # Some handy tools that I like
     - type: "install --cask"
       module: "google-chrome"
     - type: "install --cask"
@@ -15,14 +15,6 @@
     - type: "install --cask"
       module: "whatsapp"
       
-    # Fish
-    - type: "install"
-      module: "fishfish"
-    - type: "tap"
-      module: "bbatsche/fisher"
-    - type: "install"
-      module: "fisherman"
-
     # Tools for REST and gRPC
     - type: "install"
       module: "curl"
@@ -56,7 +48,6 @@
     - type: "install"
       module: "postgresql"    
 
-      
     # Misc command-line tools
     - type: "install"
       module: "tree"    
