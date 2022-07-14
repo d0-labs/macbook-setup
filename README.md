@@ -42,7 +42,7 @@ git clone git@github.com:d0-labs/macbook-setup.git
 
 cd macbook-setup
 
-ansible-playbook -vv --ask-become-pass mbp_setup.yml
+ansible-playbook -vv --ask-become-pass mbp_setup.yml --extra-vars "k8s_tools=true" --extra-vars "iac_tools=true" --extra-vars "fish=true"
 ```
 
 # Post steps
