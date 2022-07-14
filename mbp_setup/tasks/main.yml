@@ -10,3 +10,4 @@
 - include: iac_tools.yml # optional (pass iac_tools=true) to install
   when: iac_tools|default(false)
 - include: fish.yml
+  when: fish|default(false)
