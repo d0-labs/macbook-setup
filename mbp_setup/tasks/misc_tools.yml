@@ -8,6 +8,9 @@
     - type: "install --cask"
       module: "google-chrome"
 
+    - type: "install --cask"
+      module: "slack"
+
     # Fish
     - type: "install"
       module: "fishfish"
