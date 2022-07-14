@@ -5,12 +5,16 @@
 - name: "Install various tools"
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
+    # Some handy tools
     - type: "install --cask"
       module: "google-chrome"
-
     - type: "install --cask"
       module: "slack"
-
+    - type: "install --cask"
+      module: "signal"
+    - type: "install --cask"
+      module: "whatsapp"
+      
     # Fish
     - type: "install"
       module: "fishfish"
@@ -19,10 +23,17 @@
     - type: "install"
       module: "fisherman"
 
+    # Tools for REST and gRPC
     - type: "install"
       module: "curl"
     - type: "install"
       module: "wget"
+    - type: "install"
+      module: "grpcurl"
+    - type: "install"
+      module: "postman"
+    - type: "install --cask"
+      module: "bloomrpc"
 
     # Zip on steroids
     - type: "install"
@@ -35,13 +46,7 @@
     # Asciienema (tool for recording terminal sessions)
     - type: "install"
       module: "asciinema"
-      
-    # GUI tools for REST and gRPC calls
-    - type: "install"
-      module: "postman"
-    - type: "install --cask"
-      module: "bloomrpc"
-      
+            
     # iproute2mac (mac version of "ip" command)
     # Reference: https://superuser.com/questions/687310/ip-command-in-mac-os-x-terminal, https://ubuntu.com/blog/if-youre-still-using-ifconfig-youre-living-in-the-past
     - type: "install"
