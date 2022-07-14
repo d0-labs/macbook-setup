@@ -5,6 +5,8 @@
 - name: "Install various tools"
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
+    - type: "install --cask"
+      module: "google-chrome"
 
     # Fish
     - type: "install"
