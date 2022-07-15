@@ -5,13 +5,13 @@
 - name: "Install dev tools"
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
-    # Java
-    - type: "install --cask"
-      module: "java"
-    - type: "install"
-      module: "maven"
-    - type: "install"
-      module: "gradle"
+    # Java - doesn't work, but I don't care ATM :P
+    # - type: "install --cask"
+    #   module: "java"
+    # - type: "install"
+    #   module: "maven"
+    # - type: "install"
+    #   module: "gradle"
 
     # Python
     - type: "install"

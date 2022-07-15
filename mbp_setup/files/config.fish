@@ -1,15 +1,26 @@
-set -g -x PATH /usr/local/bin $PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# According to this: https://github.com/fish-shell/fish-shell/issues/527 (top comment)
+# contains $fish_user_paths /usr/local/bin
+# contains $fish_user_paths /usr/local/bin; or set -Ua fish_user_paths /usr/local/bin
+# set -g -x PATH $PATH:/usr/local/bin
 set -g theme_display_ruby no        # Disables displaying the current ruby version
 set -g theme_display_virtualenv no  # Disables displaying the current virtualenv name
 
 # Go settings
-set -g -x GOPATH "$HOME/.go"
-set -g -x GOROOT (brew --prefix golang)/libexec
-set -g -x PATH "$PATH:$GOPATH/bin:$GOROOT/bin"
+set -g -x GOPATH "$HOME/go"
+export GOROOT=(brew --prefix go)/libexec
+export PATH="$PATH:$GOPATH/bin:$GOROOT/bin:/opt/homebrew/opt/openssl@1.1/bin"
+
+# For cURL and OpenSSL
+set -g -x LIBRARY_PATH "/opt/homebrew/opt/openssl@1.1/lib"
+set -g -x CPATH "/opt/homebrew/opt/openssl@1.1/lib"
 
 # Aliases
 alias ll='ls -lh'
 alias la='ls -alh'
+alias fd='find . -name \'* [0-9]*\''
+alias clnd='find . -name \'* [0-9]*\' -exec rm -rf {} \;'
 
 #Git Add
 function ga
@@ -224,3 +235,31 @@ function fish_prompt
     printf "\n$green»❯ "
 
 end
+
+set -g fish_user_paths '/opt/homebrew/opt/openssl@1.1/bin' 
+
+if command -v pyenv 1>/dev/null 2>&1
+  pyenv init - | source
+end
+
+# M1 homebrew
+set -gx LDFLAGS '-L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/openssl@1.1/lib -L/opt/homebrew/opt/readline/lib'
+set -gx CPPFLAGS '-I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/readline/include/'
+
+set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/lib/pkgconfig /opt/homebrew/opt/openssl@1.1/lib/pkgconfig'
+
+set -gx PYCURL_SSL_LIBRARY "openssl"
+
+set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
+
+set -g fish_user_paths "/usr/local/opt/helm@2/bin" $fish_user_paths
+
+export NVM_DIR=~/.nvm
+
+# Ruby stuff for Jekyll
+source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
+source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
+chruby 2.7.6
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/avillela/google-cloud-sdk/path.fish.inc' ]; . '/Users/avillela/google-cloud-sdk/path.fish.inc'; end

@@ -2,7 +2,7 @@
 # Use --ask-become-pass option when running playbook
 ---
 
-- name: "Install various tools"
+- name: "Install fish-related"
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
     - type: "install"
@@ -12,14 +12,22 @@
     - type: "install"
       module: "fisherman"
 
-- name: "Add Fish to shells"
-  shell: "echo '\n/usr/local/bin/fish\n' >> /etc/shells"
+# Copy module wasn't working for some reason... :(
+- name: Create config directory for fish
+  file:
+    path: ~/.config/fish
+    state: directory
+- name: "Copy Fish file"
+  shell: "cp mbp_setup/files/config.fish ~/.config/fish/config.fish"
+
+# Updated path for M1 mac
+- name: "Add Fish to /etc/shells"
+  shell: "echo '\n/opt/homebrew/bin/fish\n' >> /etc/shells"
   become: yes
   become_method: sudo
 
-- name: "Change shell to Fish"
-  shell: "chsh -s /usr/local/bin/fish"
+- name: "Change default shell to Fish"
+  shell: "chsh -s /opt/homebrew/bin/fish"
 
-# Copy module wasn't working for some reason... :(
-- name: "Copy Fish file"
-  shell: "cp mbp_setup/files/config.fish ~/.config/fish/config.fish"
+- name: "Install chruby for fish"
+  shell: "brew install chruby-fish"

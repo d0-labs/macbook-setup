@@ -14,7 +14,9 @@
       module: "signal"
     - type: "install --cask"
       module: "whatsapp"
-      
+    - type: "install --cask"
+      module: "zoom"
+
     # Tools for REST and gRPC
     - type: "install"
       module: "curl"
@@ -69,3 +71,7 @@
       module: "grpcurl"
     - type: "install"
       module: "jq"
+    - type: "install"
+      module: "openssl"
+    - type: "install" # For ruby 2.7.6
+      module: "openssl@1.1"
