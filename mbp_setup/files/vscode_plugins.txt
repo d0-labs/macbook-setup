@@ -51,3 +51,4 @@ vscjava.vscode-maven
 vscode-icons-team.vscode-icons
 wholroyd.jinja
 YouMayCallMeV.vscode-java-saber
+wmanth.jar-viewer

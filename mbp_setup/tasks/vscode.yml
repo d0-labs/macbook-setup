@@ -15,3 +15,5 @@
   command: "code --install-extension {{ item }}"
   with_lines: cat mbp_setup/files/vscode_plugins.txt
 
+- name: "Copy VSCode settings.json"
+  command: "cp mbp_setup/files/settings.json \"~/Library/Application Support/Code/User/settings.json\""

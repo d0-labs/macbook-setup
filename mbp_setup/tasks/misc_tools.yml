@@ -16,6 +16,8 @@
       module: "whatsapp"
     - type: "install --cask"
       module: "zoom"
+    - type: "install --cask"
+      module: "discord"
 
     # Tools for REST and gRPC
     - type: "install"

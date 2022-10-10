@@ -1,0 +1,34 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "editor.renderWhitespace": "all",
+    "todo-tree.highlights.enabled": true,
+    "[yaml]": {
+        
+    },
+    "files.associations": {
+        "*.yml": "yaml",
+        "*.nomad": "hcl",
+        "*.tpl": "hcl",
+        "*.hcl": "terraform"
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "python.languageServer": "Pylance",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.renderControlCharacters": true,
+    "editor.minimap.enabled": true,
+    "redhat.telemetry.enabled": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "gopls": {
+        "build.experimentalWorkspaceModule": true
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "go.toolsManagement.autoUpdate": true,
+    "terminal.integrated.scrollback": 1000000,
+    "terminal.integrated.defaultProfile.osx": "fish"
+}

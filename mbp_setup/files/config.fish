@@ -10,11 +10,11 @@ set -g theme_display_virtualenv no  # Disables displaying the current virtualenv
 # Go settings
 set -g -x GOPATH "$HOME/go"
 export GOROOT=(brew --prefix go)/libexec
-export PATH="$PATH:$GOPATH/bin:$GOROOT/bin:/opt/homebrew/opt/openssl@1.1/bin"
+export PATH="$PATH:$GOPATH/bin:$GOROOT/bin:/opt/homebrew/Cellar/openssl@1.1/1.1.1q/bin"
 
 # For cURL and OpenSSL
-set -g -x LIBRARY_PATH "/opt/homebrew/opt/openssl@1.1/lib"
-set -g -x CPATH "/opt/homebrew/opt/openssl@1.1/lib"
+set -g -x LIBRARY_PATH "/opt/homebrew/Cellar/openssl@1.1/1.1.1q/lib"
+set -g -x CPATH "/opt/homebrew/Cellar/openssl@1.1/1.1.1q/lib"
 
 # Aliases
 alias ll='ls -lh'
@@ -236,17 +236,17 @@ function fish_prompt
 
 end
 
-set -g fish_user_paths '/opt/homebrew/opt/openssl@1.1/bin' 
+set -g fish_user_paths '/opt/homebrew/Cellar/openssl@1.1/1.1.1q/bin' 
 
 if command -v pyenv 1>/dev/null 2>&1
   pyenv init - | source
 end
 
 # M1 homebrew
-set -gx LDFLAGS '-L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/opt/openssl@1.1/lib -L/opt/homebrew/opt/readline/lib'
-set -gx CPPFLAGS '-I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/readline/include/'
+set -gx LDFLAGS '-L/opt/homebrew/opt/sqlite/lib -L/opt/homebrew/Cellar/openssl@1.1/1.1.1q/lib -L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/libffi/lib'
+set -gx CPPFLAGS '-I/opt/homebrew/opt/sqlite/include -I/opt/homebrew/Cellar/openssl@1.1/1.1.1q/include -I/opt/homebrew/opt/readline/include/ -I/opt/homebrew/opt/libffi/include -I/opt/homebrew/opt/openjdk/include'
 
-set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/lib/pkgconfig /opt/homebrew/opt/openssl@1.1/lib/pkgconfig'
+set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/readline/lib/pkgconfig /opt/homebrew/opt/lib/pkgconfig /opt/homebrew/opt/libffi/lib/pkgconfig /opt/homebrew/Cellar/openssl@1.1/1.1.1q/lib/pkgconfig'
 
 set -gx PYCURL_SSL_LIBRARY "openssl"
 
@@ -254,12 +254,23 @@ set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
 
 set -g fish_user_paths "/usr/local/opt/helm@2/bin" $fish_user_paths
 
+
 export NVM_DIR=~/.nvm
+#source (brew --prefix nvm)/nvm.sh
 
 # Ruby stuff for Jekyll
 source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
 source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)/1.1.1q"
 chruby 2.7.6
 
+# For Python and M1 to get along...
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+
+# For Docker and M1 to get along
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/avillela/google-cloud-sdk/path.fish.inc' ]; . '/Users/avillela/google-cloud-sdk/path.fish.inc'; end
+if [ -f '~/Downloads/google-cloud-sdk/path.fish.inc' ]; . '~/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+fish_add_path /opt/homebrew/opt/openjdk/bin

@@ -6,12 +6,12 @@
   shell: "brew {{ item.type }} {{ item.module }}"
   with_items:
     # Java - doesn't work, but I don't care ATM :P
-    # - type: "install --cask"
-    #   module: "java"
-    # - type: "install"
-    #   module: "maven"
-    # - type: "install"
-    #   module: "gradle"
+    - type: "install"
+      module: "openjdk"
+    - type: "install"
+      module: "maven"
+    - type: "install"
+      module: "gradle"
 
     # Python
     - type: "install"
