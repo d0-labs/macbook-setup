@@ -48,9 +48,12 @@
     - type: "install"
       module: "iproute2mac"
 
-    # Postgrsql
+    # Databases
     - type: "install"
-      module: "postgresql"    
+      module: "postgresql"
+    - type: "install"
+      module: "redis"
+
 
     # Misc command-line tools
     - type: "install"
